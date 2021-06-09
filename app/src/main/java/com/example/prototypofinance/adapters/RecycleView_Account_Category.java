@@ -41,7 +41,7 @@ public class RecycleView_Account_Category extends RecyclerView.Adapter<RecycleVi
         holder.recycleView_account_textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //holder.recycleView_account_textView.setS
+
             }
         });
     }

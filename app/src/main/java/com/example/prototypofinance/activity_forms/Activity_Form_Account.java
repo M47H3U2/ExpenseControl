@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.prototypofinance.R;
+import com.example.prototypofinance.database.DataBaseHelper;
+import com.example.prototypofinance.pojos.Account_POJO;
 import com.google.android.material.textfield.TextInputEditText;
 
 import me.abhinay.input.CurrencyEditText;
@@ -25,6 +28,8 @@ public class Activity_Form_Account extends Activity {
     private CurrencyEditText form_account_textInput_Value;
 
     private Intent intent;
+    private Account_POJO account_pojo;
+    private DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,42 +61,43 @@ public class Activity_Form_Account extends Activity {
 
             }
         });
-        form_account_textInput_Name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
         form_account_button_Category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(v.getContext(), Activity_Form_Category.class);
-                intent.putExtra("accountcategory","account");
+                intent.putExtra("accountcategory", "account");
                 startActivity(intent);
             }
         });
         form_account_button_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                saveFormAccount();
             }
         });
     }
 
-    private void registerAccount() {
-       /* Account_POJO accountPOJO = new Account_POJO();
-
-        accountPOJO.setDate("");
-        accountPOJO.setName(textInputEdit_RGA_Name.getText().toString());
-        accountPOJO.setCategory(textInputEdit_RGA_Category.getText().toString());
-        accountPOJO.setValue(String.valueOf(textInputEdit_RGA_Value.getText().toString()));
+    private void saveFormAccount() {
+        account_pojo = new Account_POJO();
+        if (form_account_textInput_Name.getText().toString() == null) {
+            Toast.makeText(getApplicationContext(), "NOME NÃO PREENCHIDO", Toast.LENGTH_SHORT).show();
+            if (form_account_textInput_Value.getText().toString() == null) {
+                Toast.makeText(getApplicationContext(), "SALDO NÃO PREENCHIDO", Toast.LENGTH_SHORT).show();
+            } else if (form_account_button_Category.getText() == "Categoria") {
+                Toast.makeText(getApplicationContext(), "CATEGORIA NÃO PREENCHIDA", Toast.LENGTH_SHORT).show();
+            }
+        }
+        account_pojo.setDate("");
+        account_pojo.setName(form_account_textInput_Name.getText().toString());
+        account_pojo.setCategory(form_account_button_Category.getText().toString());
+        account_pojo.setValue(String.valueOf(form_account_textInput_Value.getText().toString()));
 
         //Inserting the DATA in the database
-        //DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext(), "Finance", null, 1);
-        //dataBaseHelper.insertAccount(accountPOJO);
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getApplicationContext(), "Finance", null, 1);
+        dataBaseHelper.insertAccount(account_pojo);
 
         //Closing the activity
-        //getActivity().finish();*/
+        this.finish();
     }
 
 }
