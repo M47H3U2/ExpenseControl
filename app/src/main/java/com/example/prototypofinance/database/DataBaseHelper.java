@@ -20,19 +20,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASENAME = "FINANCE";
     private static final int VERSIONDATABASE = 1;
 
-    private String createDB = "CREATE TABLE ";
+    //private String createDB = "CREATE TABLE ";
 
     public DataBaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         //super(context, name, factory, version);
         super(context, DATABASENAME, null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create the tables in the data base
 
-        //db.execSQL(categoryTable());
+        db.execSQL(categoryTable());
         db.execSQL(accountTable());
         db.execSQL(expenseTable());
         db.execSQL(incomeTable());
@@ -47,31 +46,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //CATEGORIA VAI VIRAR TEMPORARIAMENTE PARTEDA TABELA
     private String accountTable() {
-        return "CREATE TABLE accounts ("
+        return "CREATE TABLE account ("
                 + "ACCOUNT_ID integer primary key autoincrement,"
                 + "ACCOUNT_DATETIME datetime not null,"
                 + "ACCOUNT_NAME varchar(50) not null,"
                 + "ACCOUNT_CATEGORY varchar(50) not null,"
-                + "ACCOUNT_VALUE varchar not null);";//,"
-        // + "foreign key (ACCOUNT_CATEGORY_ID) references categories(CATEGORY_ID));";
+                + "ACCOUNT_VALUE varchar not null),"
+                + "foreign key (ACCOUNT_CATEGORY_ID) references categories(CATEGORY_ID));";
     }
 
-    /*private String categoryTable() {
-        return "CREATE TABLE categories ("
+    private String categoryTable() {
+        return "CREATE TABLE category ("
                 + "CATEGORY_ID int primary key auto_increment not null,"
                 + "CATEGORY_NAME varchar(50) not null,"
                 + "SUBCATEGORY_NAME varchar(50) not null);";
-    }*/
+    }
+
     private String expenseTable() {
-        return "CREATE TABLE expenses ("
+        return "CREATE TABLE expense ("
                 + "EXPENSE_ID integer primary key autoincrement,"
                 + "EXPENSE_DATETIME varchar not null,"
                 + "EXPENSE_ACCOUNT_ID varchar not null,"
                 + "EXPENSE_CATEGORY_ID varchar not null,"
                 + "EXPENSE_VALUE varchar not null,"
-                + "EXPENSE_DESCRIPTION varchar(200));";
-        //+ "foreign key (EXPENSE_ACCOUNT_ID) references accounts(ACCOUNT_ID),"
-        //+ "foreign key (EXEPENSE_CATEGORY_ID) references categories(CATEGORY_ID));";
+                + "EXPENSE_DESCRIPTION varchar(200)),"
+                + "foreign key (EXPENSE_ACCOUNT_ID) references accounts(ACCOUNT_ID),"
+                + "foreign key (EXEPENSE_CATEGORY_ID) references categories(CATEGORY_ID));";
     }
 
     private String incomeTable() {
@@ -81,9 +81,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "INCOME_ACCOUNT_ID varchar not null,"
                 + "INCOME_CATEGORY_ID varchar not null,"
                 + "INCOME_VALUE varchar not null,"
-                + "INCOME_DESCRIPTION_TEXT int)";
-        //+ "foreign key (INCOME_ACCOUNT_ID) references accounts(ACCOUNT_ID),"
-        //+ "foreign key (INCOME_CATEGORY_ID) references categories(CATEGORY_ID));";
+                + "INCOME_DESCRIPTION_TEXT int)"
+                + "foreign key (INCOME_ACCOUNT_ID) references accounts(ACCOUNT_ID),"
+                + "foreign key (INCOME_CATEGORY_ID) references categories(CATEGORY_ID));";
     }
 
     private String transferTable() {
@@ -95,18 +95,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "TRANSFER_ACCOUNT_ID_SENDER varchar not null,"
                 + "TRANSFER_ACCOUNT_ID_RECEIVER varchar not null,"
                 + "TRANSFER_CATEGORY_ID varchar not null,"
-                + "TRANFER_DESCRIPTION_TEXT varchar)";
-        //+ "foreign key (TRANSFER_ACCOUNT_ID_SENDER) references accounts(ACCOUNT_ID),"
-        //+ "foreign key (TRANSFER_ACCOUNT_ID_RECEIVER) references accounts(ACCOUNT_ID),"
-        //+ "foreign key (TRANSFER_CATEGORY_ID) references categories(CATEGORY_ID));";
+                + "TRANSFER_DESCRIPTION_TEXT varchar)"
+                + "foreign key (TRANSFER_ACCOUNT_ID_SENDER) references accounts(ACCOUNT_ID),"
+                + "foreign key (TRANSFER_ACCOUNT_ID_RECEIVER) references accounts(ACCOUNT_ID),"
+                + "foreign key (TRANSFER_CATEGORY_ID) references categories(CATEGORY_ID));";
     }
 
     public void insertAccount(Account_POJO pojoAccount) {
         //Opening the connection between the database
         SQLiteDatabase db = this.getWritableDatabase();
         //the statment receive the sql and your values
-        SQLiteStatement sqLiteStatement = db.compileStatement("insert into accounts ( ACCOUNT_DATETIME, ACCOUNT_NAME,ACCOUNT_CATEGORY, ACCOUNT_VALUE )"
-                + "values (?, ?, ?, ?)");
+        SQLiteStatement sqLiteStatement =
+                db.compileStatement(
+                        "insert into accounts ( ACCOUNT_DATETIME, ACCOUNT_NAME,ACCOUNT_CATEGORY, ACCOUNT_VALUE )"
+                                + "values (?, ?, ?, ?)");
 
         //Bind together all data from the pojos into the query line by index
         sqLiteStatement.bindString(1, pojoAccount.getDate());
@@ -120,7 +122,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteStatement.close();
         //Finish the database connection
         db.close();
-
     }
 
     public void insertExpense(Expense_POJO expense_pojo) {
