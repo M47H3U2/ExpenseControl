@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_menu_item_Account"
+        android:icon="@drawable/ic_baseline_account_balance_wallet_24"
+        android:title="@string/account"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/main_menu_item_Expense"
+        android:icon="@drawable/ic_baseline_call_received_24"
+        android:title="@string/main_expense"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/main_menu_item_Income"
+        android:icon="@drawable/ic_baseline_call_made_24"
+        android:title="@string/main_income"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/main_menu_item_Transfer"
+        android:icon="@drawable/ic_baseline_compare_arrows_24"
+        android:title="@string/main_transfer"
+        app:showAsAction="ifRoom" />
+</menu>

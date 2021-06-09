@@ -1,0 +1,103 @@
+<resources>
+    <string name="app_name">PrototypoFinance</string>
+
+    <!-- Inicio Tela Principal -->
+    <string name="main_welcome">Bem-Vindo!</string>
+    <string name="main_expense">Despesa</string>
+    <string name="main_income">Renda</string>
+    <string name="main_transfer">Transferencia</string>
+    <string name="main_graphic">Grafico</string>
+
+    <string name="main_empty">Vazio</string>
+    <string name="main_value">Saldo</string>
+    <string name="main_total">Total</string>
+    <!-- Fim Tela Principal End -->
+
+    <!-- Menu cadastro despesa -->
+    <string name="save">Salvar</string>
+    <!-- menu cadastro despesa -->
+
+    <!-- Form register account -->
+    <string name="account">Conta</string>
+    <string name="account_date">Data</string>
+    <string name="account_time">Time</string>
+    <string name="account_name">Nome</string>
+    <string name="account_category">Categoria</string>
+    <string name="account_value">Saldo</string>
+    <string name="account_coin">Moeda</string>
+    <string name="account_creditcard">CreditCard</string>
+    <string name="account_savings">Poupanca</string>
+    <string name="account_wallet">Carteira</string>
+    <!-- End Register Account -->
+
+    <!-- Form Register Income -->
+    <string name="income_date">Data</string>
+    <string name="income_time">Time</string>
+    <string name="income_account">Conta</string>
+    <string name="income_value">Valor</string>
+    <string name="income_category">Categoria</string>
+    <string name="income_description">Descrição</string>
+    <!-- End Register Income -->
+
+    <!-- Form Register Expense -->
+    <string name="expense_time">Time</string>
+    <string name="expense_date">Data</string>
+    <string name="expense_account">Conta</string>
+    <string name="expense_value">Valor</string>
+    <string name="expense_description">Descrição</string>
+    <!-- Form Register Expense -->
+
+    <!-- Form Transfer  -->
+    <string name="transfer_time">Time</string>
+    <string name="transfer_date">Data</string>
+    <string name="transfer_accountgive">Conta</string>
+    <string name="transfer_accounttake">Conta</string>
+    <string name="trasfer_value">Valor</string>
+    <string name="transfer_description">Descrição</string>
+
+    <string-array name="payment_ways">
+        <item>Dinheiro</item>
+        <item>Cartão de Crédito</item>
+        <item>Cartão de Débito</item>
+    </string-array>
+
+    <string-array name="activity_category">
+        <item>Habitacional</item>
+        <item>Transporte</item>
+        <item>Lazer</item>
+        <item>Maintence</item>
+        <item>Outros</item>
+    </string-array>
+
+    <!-- Method payment-->
+    <string name="Dinheiro">Dinheiro</string>
+    <string name="creditcard">Cartão de Dinheiro</string>
+    <string name="debitcard">Carão de Débito</string>
+
+    <!-- Categories-->
+    <string name="housing">Habitacional</string>
+    <string name="transport">Transporte</string>
+    <string name="freetime">Lazer</string>
+    <string name="maintence">Manutenção</string>
+    <string name="others">Outros</string>
+
+    <!--RecycleView List-->
+    <string name="account_list_name">Name:</string>
+    <string name="account_list_empty">Empty</string>
+    <string name="account_list_date">Data:</string>
+    <string name="account_list_category">Categoria:</string>
+    <string name="account_list_value">Valor:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity__category">Activity_Category</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>
