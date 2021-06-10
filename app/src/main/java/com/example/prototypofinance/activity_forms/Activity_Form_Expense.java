@@ -12,15 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.prototypofinance.R;
-
-import me.abhinay.input.CurrencyEditText;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Activity_Form_Expense extends Activity {
 
     private Toolbar form_expense_toolbar;
     private CalendarView form_expense_calendarView;
     private Button form_expense_button_Account, form_expense_button_Category, form_expense_button_Description;
-    private CurrencyEditText form_expense_textInput_Value;
+    private TextInputEditText form_expense_textInput_Value;
 
     private Intent intent;
 

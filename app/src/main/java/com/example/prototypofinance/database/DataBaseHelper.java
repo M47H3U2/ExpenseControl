@@ -59,7 +59,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "EXPENSE_ACCOUNT_ID varchar not null,"
                 + "EXPENSE_CATEGORY varchar not null,"
                 + "EXPENSE_VALUE varchar not null,"
-                + "EXPENSE_DESCRIPTION varchar(200)),"
+                + "EXPENSE_DESCRIPTION varchar(200),"
                 + "foreign key (EXPENSE_ACCOUNT_ID) references accounts(ACCOUNT_ID)";
     }
 

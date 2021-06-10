@@ -10,15 +10,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.prototypofinance.R;
-
-import me.abhinay.input.CurrencyEditText;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Activity_Form_Transfer extends Activity {
 
     private Toolbar toolbar;
     private CalendarView form_transfer_calendarView;
     private Button form_transfer_button_Account_Sender, form_transfer_button_Account_Receiver, form_transfer_button_Description;
-    private CurrencyEditText form_transfer_textInput_Value;
+    private TextInputEditText form_transfer_textInput_Value;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

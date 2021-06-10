@@ -17,18 +17,12 @@ import com.example.prototypofinance.database.DataBaseHelper;
 import com.example.prototypofinance.pojos.Account_POJO;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-import me.abhinay.input.CurrencyEditText;
-
 public class Activity_Form_Account extends Activity {
 
     private Toolbar toolbar;
     private CalendarView calendarView;
-    private TextInputEditText form_account_textInput_Name;
+    private TextInputEditText form_account_textInput_Name,form_account_textInput_Value;
     private Button form_account_button_Category, form_account_button_Save;
-    private CurrencyEditText form_account_textInput_Value;
 
     private Intent intent;
     private Account_POJO account_pojo;
@@ -85,7 +79,7 @@ public class Activity_Form_Account extends Activity {
         account_pojo = new Account_POJO();
         if (form_account_textInput_Name.getText().toString() == null) {
             Toast.makeText(getApplicationContext(), "NOME NÃO PREENCHIDO", Toast.LENGTH_SHORT).show();
-            if (form_account_textInput_Value.getText().toString() == null) {
+            if (form_account_textInput_Value.getText() == null) {
                 Toast.makeText(getApplicationContext(), "SALDO NÃO PREENCHIDO", Toast.LENGTH_SHORT).show();
             } else if (form_account_button_Category.getText() == "Categoria") {
                 Toast.makeText(getApplicationContext(), "CATEGORIA NÃO PREENCHIDA", Toast.LENGTH_SHORT).show();
@@ -94,10 +88,10 @@ public class Activity_Form_Account extends Activity {
         account_pojo.setDate(datetime);
         account_pojo.setName(form_account_textInput_Name.getText().toString());
         account_pojo.setCategory(form_account_button_Category.getText().toString());
-        account_pojo.setValue(Integer.parseInt(form_account_textInput_Value.getText().toString()));
+        account_pojo.setValue(111);//Integer.parseInt(form_account_textInput_Value.getText().toString()));
 
         //Inserting the DATA in the database
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(getApplicationContext(), "Finance", null, 1);
+        dataBaseHelper = new DataBaseHelper(getApplicationContext(), "Finance", null, 1);
         dataBaseHelper.insertAccount(account_pojo);
 
         Toast.makeText(getApplicationContext(), "CADASTRADO COM SUCESSO!", Toast.LENGTH_SHORT).show();

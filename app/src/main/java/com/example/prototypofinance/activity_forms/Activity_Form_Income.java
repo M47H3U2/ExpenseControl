@@ -12,15 +12,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.prototypofinance.R;
-
-import me.abhinay.input.CurrencyEditText;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class Activity_Form_Income extends Activity {
 
     private Toolbar toolbar;
     private CalendarView form_income_calendarView;
     private Button form_income_button_Account,form_income_button_Category,form_income_button_Description;
-    private CurrencyEditText form_transfer_textInput_Value;
+    private TextInputEditText form_transfer_textInput_Value;
 
     private Intent intent;
 

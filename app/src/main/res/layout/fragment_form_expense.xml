@@ -44,7 +44,7 @@
                 app:boxCornerRadiusTopStart="20dp"
                 app:startIconDrawable="@drawable/ic_round_attach_money_24">
 
-                <me.abhinay.input.CurrencyEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_expense_textInput_Value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
