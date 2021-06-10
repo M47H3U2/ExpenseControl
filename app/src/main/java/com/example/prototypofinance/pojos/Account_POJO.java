@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class Account_POJO implements Serializable {
 
-    private String[] date;
+    private String date;
     private String name;
     private String category;
     private int value;
@@ -13,18 +13,18 @@ public class Account_POJO implements Serializable {
     public Account_POJO() {
     }
 
-    public Account_POJO(String[] date, String name, String category, int value) {
+    public Account_POJO(String date, String name, String category, int value) {
         this.date = date;
         this.name = name;
         this.category = category;
         this.value = value;
     }
 
-    public String[] getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(String[] date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

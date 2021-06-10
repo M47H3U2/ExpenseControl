@@ -33,7 +33,7 @@ public class Activity_Form_Account extends Activity {
     private Intent intent;
     private Account_POJO account_pojo;
     private DataBaseHelper dataBaseHelper;
-    private String[] datetime; //format: YYYY-MM-DD HH:MI:SS
+    private String datetime; //format: YYYY-MM-DD HH:MI:SS
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class Activity_Form_Account extends Activity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                datetime = new String[]{String.valueOf(year), String.valueOf(month), String.valueOf(dayOfMonth)};
+                datetime = year + "-" + month + "-" + dayOfMonth;//the Time will be blanck
             }
         });
         form_account_button_Category.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +100,7 @@ public class Activity_Form_Account extends Activity {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(getApplicationContext(), "Finance", null, 1);
         dataBaseHelper.insertAccount(account_pojo);
 
-        Toast.makeText(getApplicationContext(),"CADASTRADO COM SUCESSO!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "CADASTRADO COM SUCESSO!", Toast.LENGTH_SHORT).show();
 
         //Closing the activity
         this.finish();
