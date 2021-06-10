@@ -94,7 +94,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //the statment receive the sql and your values
         SQLiteStatement sqLiteStatement =
                 db.compileStatement(
-                        "insert into account ( ACCOUNT_DATETIME, ACCOUNT_NAME,ACCOUNT_CATEGORY, ACCOUNT_VALUE )"
+                        "insert into accounts ( ACCOUNT_DATETIME, ACCOUNT_NAME,ACCOUNT_CATEGORY, ACCOUNT_VALUE )"
                                 + "values (?, ?, ?, ?)");
 
         //Bind together all data from the pojos into the query line by index

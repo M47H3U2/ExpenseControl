@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.prototypofinance.R;
-import com.example.prototypofinance.adapters.RecycleView_Account_Category;
 import com.example.prototypofinance.adapters.ViewPager_Adapter_Category;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -36,7 +35,7 @@ public class Activity_Form_Category extends AppCompatActivity {
             R.drawable.ic_baseline_house_24, R.drawable.ic_baseline_emoji_transportation_24,
             R.drawable.ic_baseline_free_breakfast_24, R.drawable.ic_baseline_build_24, R.drawable.ic_baseline_more_vert_24};
     private String[] accountcategoryList = new String[]{
-            "Carteira","Conta salário","Conta corrente","Conta eletrônica","Conta poupança"};
+            "Carteira", "Conta salário", "Conta corrente", "Conta eletrônica", "Conta poupança"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,30 +60,14 @@ public class Activity_Form_Category extends AppCompatActivity {
             }
         });
 
-        //Intent from Activity_Form_Account to make modifications on the view and replace it
-        if ("account".equals(getIntent().getStringExtra("accountcategory"))) {
+        viewPager2.setAdapter(new ViewPager_Adapter_Category(getSupportFragmentManager(), getLifecycle()));
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setIcon(category_icon[position]);
+            }
+        }).attach();
 
-            tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_account_balance_24));
-            recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-            recyclerView.setAdapter(new RecycleView_Account_Category(accountcategoryList));
-            recyclerView.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(), "ACCOUNT CATEGORY", Toast.LENGTH_SHORT).show();
-
-        } else if ("income".equals(getIntent().getStringExtra("incomecategory"))) {
-
-            Toast.makeText(getApplicationContext(), "INCOME CATEGORY", Toast.LENGTH_SHORT).show();
-            tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_baseline_payments_24));
-
-        } else {
-
-            viewPager2.setAdapter(new ViewPager_Adapter_Category(getSupportFragmentManager(), getLifecycle()));
-            new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
-                @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setIcon(category_icon[position]);
-                }
-            }).attach();
-        }
     }
 
 }

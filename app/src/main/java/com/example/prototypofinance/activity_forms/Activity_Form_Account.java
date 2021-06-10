@@ -62,9 +62,7 @@ public class Activity_Form_Account extends Activity {
         form_account_button_Category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(v.getContext(), Activity_Form_Category.class);
-                intent.putExtra("accountcategory", "account");
-                startActivity(intent);
+
             }
         });
         form_account_button_Save.setOnClickListener(new View.OnClickListener() {
