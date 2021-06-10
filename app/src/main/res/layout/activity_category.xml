@@ -28,12 +28,6 @@
             app:tabIndicatorFullWidth="false"
             app:tabMode="auto" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/activity_category_RecycleView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2

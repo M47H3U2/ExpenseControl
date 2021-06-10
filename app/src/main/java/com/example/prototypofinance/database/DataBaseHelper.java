@@ -49,7 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "ACCOUNT_DATETIME datetime not null,"
                 + "ACCOUNT_NAME varchar(50) not null,"
                 + "ACCOUNT_CATEGORY varchar(50) not null,"
-                + "ACCOUNT_VALUE varchar not null);";
+                + "ACCOUNT_VALUE int not null);";
     }
 
     private String expenseTable() {
@@ -66,22 +66,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private String incomeTable() {
         return "CREATE TABLE incomes ("
                 + "INCOME_ID integer primary key autoincrement,"
-                + "INCOME_DATETIME varchar not null,"
-                + "INCOME_ACCOUNT_ID varchar not null,"
+                + "INCOME_DATETIME datetime not null,"
+                + "INCOME_ACCOUNT_ID int not null,"
                 + "INCOME_CATEGORY varchar not null,"
-                + "INCOME_VALUE varchar not null,"
-                + "INCOME_DESCRIPTION_TEXT int)"
+                + "INCOME_VALUE int not null,"
+                + "INCOME_DESCRIPTION_TEXT varchar,"
                 + "foreign key (INCOME_ACCOUNT_ID) references accounts(ACCOUNT_ID))";
     }
 
     private String transferTable() {
         return "CREATE TABLE transfers ("
                 + "TRANSFER_ID integer primary key autoincrement,"
-                + "TRANSFER_DATETIME varchar(10) not null,"
+                + "TRANSFER_DATETIME datetime not null,"
                 + "TRANSFER_NAME varchar(50) not null,"
-                + "TRANSFER_VALUE varchar not null,"
-                + "TRANSFER_ACCOUNT_ID_SENDER varchar not null,"
-                + "TRANSFER_ACCOUNT_ID_RECEIVER varchar not null,"
+                + "TRANSFER_VALUE int not null,"
+                + "TRANSFER_ACCOUNT_ID_SENDER int not null,"
+                + "TRANSFER_ACCOUNT_ID_RECEIVER int not null,"
                 + "TRANSFER_DESCRIPTION_TEXT varchar,"
                 + "foreign key (TRANSFER_ACCOUNT_ID_SENDER) references accounts(ACCOUNT_ID),"
                 + "foreign key (TRANSFER_ACCOUNT_ID_RECEIVER) references accounts(ACCOUNT_ID));";
@@ -116,13 +116,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         //the statment receive the sql and your values
         SQLiteStatement sqLiteStatement =
-                db.compileStatement("insert into expenses (EXPENSE_DATETIME,EXPENSE_ACCOUNT_ID,EXPENSE_CATEGORY_ID,EXPENSE_VALUE,EXPENSE_DESCRIPTION) values (?,?,?,?,?)");
+                db.compileStatement("insert into expenses (EXPENSE_DATETIME, EXPENSE_ACCOUNT_ID, EXPENSE_CATEGORY_ID, EXPENSE_VALUE, EXPENSE_DESCRIPTION) values (?,?,?,?,?)");
 
         //Bind together all data from the pojos into the query line by index
-        sqLiteStatement.bindString(1, expense_pojo.getDate());
+        sqLiteStatement.bindString(1, expense_pojo.getDatetime());
         sqLiteStatement.bindString(2, expense_pojo.getAccountName());
         sqLiteStatement.bindString(3, expense_pojo.getType());
-        sqLiteStatement.bindString(4, expense_pojo.getValue());
+        sqLiteStatement.bindLong(4, expense_pojo.getValue());
         sqLiteStatement.bindString(5, expense_pojo.getDescription());
 
         //Execute the code after finished
@@ -138,14 +138,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         //the statment receive the sql and your values
         SQLiteStatement sqLiteStatement = db.compileStatement(
-                "insert into accounts ( INCOME_DATETIME, INCOME_ACCOUNT_ID,INCOME_CATEGORY_ID, INCOME_VALUE, INCOME_DESCRIPTION_TEXT )"
+                "insert into accounts ( INCOME_DATETIME, INCOME_ACCOUNT_ID, INCOME_CATEGORY_ID, INCOME_VALUE, INCOME_DESCRIPTION_TEXT )"
                         + "values (?, ?, ?, ?,?)");
 
         //Bind together all data from the pojos into the query line by index
-        sqLiteStatement.bindString(1, income_pojo.getDate());
+        sqLiteStatement.bindString(1, income_pojo.getDatetime());
         sqLiteStatement.bindString(2, income_pojo.getAccountName());
         sqLiteStatement.bindString(3, income_pojo.getType());
-        sqLiteStatement.bindString(4, income_pojo.getValue());
+        sqLiteStatement.bindLong(4, income_pojo.getValue());
         sqLiteStatement.bindString(5, income_pojo.getDescription());
 
         //Execute the code after finished
@@ -218,9 +218,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int count = 0;
                 Expense_POJO expense_pojo = new Expense_POJO();
 
-                expense_pojo.setDate(cursor.getString(1));
+                expense_pojo.setDatetime(cursor.getString(1));
                 expense_pojo.setAccountName(cursor.getString(2));
-                expense_pojo.setValue(cursor.getString(3));
+                expense_pojo.setValue(cursor.getInt(3));
                 expense_pojo.setType(cursor.getString(4));
                 expense_pojo.setDescription(cursor.getString(5));
 
@@ -247,9 +247,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int count = 0;
                 Income_POJO income_pojo = new Income_POJO();
 
-                income_pojo.setDate(cursor.getString(1));
+                income_pojo.setDatetime(cursor.getString(1));
                 income_pojo.setAccountName(cursor.getString(2));
-                income_pojo.setValue(cursor.getString(3));
+                income_pojo.setValue(cursor.getInt(3));
                 income_pojo.setType(cursor.getString(4));
                 income_pojo.setDescription(cursor.getString(5));
 

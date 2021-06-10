@@ -21,21 +21,16 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class Activity_Form_Category extends AppCompatActivity {
+
     private Toolbar toolbar;
     private ViewPager2 viewPager2;
     private TabLayout tabLayout;
 
-    private RecyclerView recyclerView;
-
     private Intent intent;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
 
     private int[] category_icon = new int[]{
             R.drawable.ic_baseline_house_24, R.drawable.ic_baseline_emoji_transportation_24,
             R.drawable.ic_baseline_free_breakfast_24, R.drawable.ic_baseline_build_24, R.drawable.ic_baseline_more_vert_24};
-    private String[] accountcategoryList = new String[]{
-            "Carteira", "Conta salário", "Conta corrente", "Conta eletrônica", "Conta poupança"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +44,6 @@ public class Activity_Form_Category extends AppCompatActivity {
         toolbar = findViewById(R.id.activity_category_Toolbar);
         viewPager2 = findViewById(R.id.activity_category_ViewPager2);
         tabLayout = findViewById(R.id.activity_category_TabLayout);
-        recyclerView = findViewById(R.id.activity_category_RecycleView);
     }
 
     private void setOnClickListener() {

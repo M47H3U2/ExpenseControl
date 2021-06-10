@@ -4,30 +4,30 @@ import java.io.Serializable;
 
 public class Expense_POJO implements Serializable {
 
-    private String date;
+    private String datetime;
     //private int time;
     private String accountName;
     private String type;
-    private String value;
+    private int value;
     private String description;
 
     public Expense_POJO() {
     }
 
-    public Expense_POJO(String date, String accountName, String type, String value, String description) {
-        this.date = date;
+    public Expense_POJO(String datetime, String accountName, String type, int value, String description) {
+        this.datetime = datetime;
         this.accountName = accountName;
         this.type = type;
         this.value = value;
         this.description = description;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
     public String getAccountName() {
@@ -46,11 +46,11 @@ public class Expense_POJO implements Serializable {
         this.type = type;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(int value) {
         this.value = value;
     }
 

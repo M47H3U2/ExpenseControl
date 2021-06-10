@@ -60,7 +60,13 @@
         <item>Cartão de Crédito</item>
         <item>Cartão de Débito</item>
     </string-array>
-
+    <string-array name="acitivty_account_category">
+        <item>Carteira</item>
+        <item>Conta salário</item>
+        <item>Conta corrente</item>
+        <item>Conta eletrônica</item>
+        <item>Conta poupança</item>
+    </string-array>
     <string-array name="activity_category">
         <item>Habitacional</item>
         <item>Transporte</item>
