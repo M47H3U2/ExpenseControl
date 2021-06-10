@@ -55,12 +55,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private String expenseTable() {
         return "CREATE TABLE expenses ("
                 + "EXPENSE_ID integer primary key autoincrement,"
-                + "EXPENSE_DATETIME varchar not null,"
-                + "EXPENSE_ACCOUNT_ID varchar not null,"
+                + "EXPENSE_DATETIME datetime not null,"
+                + "EXPENSE_ACCOUNT_ID int not null,"
                 + "EXPENSE_CATEGORY varchar not null,"
-                + "EXPENSE_VALUE varchar not null,"
+                + "EXPENSE_VALUE int not null,"
                 + "EXPENSE_DESCRIPTION varchar(200),"
-                + "foreign key (EXPENSE_ACCOUNT_ID) references accounts(ACCOUNT_ID)";
+                + "foreign key (EXPENSE_ACCOUNT_ID) references accounts(ACCOUNT_ID));";
     }
 
     private String incomeTable() {
@@ -71,7 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "INCOME_CATEGORY varchar not null,"
                 + "INCOME_VALUE varchar not null,"
                 + "INCOME_DESCRIPTION_TEXT int)"
-                + "foreign key (INCOME_ACCOUNT_ID) references accounts(ACCOUNT_ID)";
+                + "foreign key (INCOME_ACCOUNT_ID) references accounts(ACCOUNT_ID))";
     }
 
     private String transferTable() {
@@ -82,9 +82,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + "TRANSFER_VALUE varchar not null,"
                 + "TRANSFER_ACCOUNT_ID_SENDER varchar not null,"
                 + "TRANSFER_ACCOUNT_ID_RECEIVER varchar not null,"
-                + "TRANSFER_DESCRIPTION_TEXT varchar)"
+                + "TRANSFER_DESCRIPTION_TEXT varchar,"
                 + "foreign key (TRANSFER_ACCOUNT_ID_SENDER) references accounts(ACCOUNT_ID),"
-                + "foreign key (TRANSFER_ACCOUNT_ID_RECEIVER) references accounts(ACCOUNT_ID),";
+                + "foreign key (TRANSFER_ACCOUNT_ID_RECEIVER) references accounts(ACCOUNT_ID));";
     }
 
     public void insertAccount(Account_POJO pojoAccount) {
