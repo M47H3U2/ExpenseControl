@@ -8,12 +8,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.prototypofinance.fragments.fragments_expenses.Fragment_Expense;
 import com.example.prototypofinance.fragments.fragments_accounts.Fragment_Account;
 import com.example.prototypofinance.fragments.fragments_incomes.Fragment_Income;
 import com.example.prototypofinance.fragments.fragments_transfers.Fragment_Transfer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,18 +49,25 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.main_menu_item_Expense:
+
+                    Toast.makeText(getApplicationContext(), "EXPENSE!", Toast.LENGTH_SHORT).show();
                     item.setChecked(true);
                     setFragementView(new Fragment_Expense());
                     break;
                 case R.id.main_menu_item_Income:
+
+                    Toast.makeText(getApplicationContext(), "RENDA!", Toast.LENGTH_SHORT).show();
                     item.setChecked(true);
                     setFragementView(new Fragment_Income());
                     break;
                 case R.id.main_menu_item_Transfer:
+
+                    Toast.makeText(getApplicationContext(), "TRANSFERENCIA!", Toast.LENGTH_SHORT).show();
                     item.setChecked(true);
                     setFragementView(new Fragment_Transfer());
                     break;
                 default:
+                    Toast.makeText(getApplicationContext(), "CONTA!", Toast.LENGTH_SHORT).show();
                     item.setChecked(true);
                     setFragementView(new Fragment_Account());
             }

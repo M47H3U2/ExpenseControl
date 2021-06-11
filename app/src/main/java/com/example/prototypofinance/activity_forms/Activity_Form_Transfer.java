@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -30,7 +31,6 @@ public class Activity_Form_Transfer extends Activity {
         form_transfer_button_Account_Sender = findViewById(R.id.form_transfer_button_Account_Sender);
         form_transfer_button_Account_Receiver = findViewById(R.id.form_transfer_button_Account_Receiver);
         form_transfer_button_Description = findViewById(R.id.form_transfer_button_Account_Description);
-
         setOnClickListener();
 
     }
